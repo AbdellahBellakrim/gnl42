@@ -1,53 +1,56 @@
-# Get Next Line
+# Get Next Line Project
 
-**Get Next Line** is a function that reads a line from a file descriptor in C programming language. It allows you to read a text file or standard input line by line, making it a convenient addition to your collection of functions. This project also provides an opportunity to learn about static variables in C programming.
+This project involves programming a function, `get_next_line`, that reads a line from a file descriptor. The function should be able to read a text file pointed to by the file descriptor, one line at a time.
 
 ## Table of Contents
-
-- [Goals](#goals)
-- [Common Instructions](#common-instructions)
-- [Mandatory Part](#mandatory-part)
-- [Bonus Part](#bonus-part)
+1. [Goals](#goals)
+2. [Common Instructions](#common-instructions)
+3. [Mandatory Part](#mandatory-part)
+4. [Bonus Part](#bonus-part)
 
 ## Goals
-
-The main goal of this project is to implement the `get_next_line` function, which reads a line from a file descriptor. The function should return the line that was read, or `NULL` if there is nothing else to read or an error occurred. The function should work correctly when reading from a file or from standard input. The returned line should include the terminating `\n` character, except when the end of file is reached and does not end with a `\n` character.
+- Implement a function (`get_next_line`) that reads a line from a file descriptor.
+- Learn and apply the concept of static variables in C programming.
 
 ## Common Instructions
-
-- Your project must be written in C.
-- Follow the Norm guidelines for writing code.
-- Your functions should not quit unexpectedly (e.g., segmentation fault, bus error) apart from undefined behaviors.
-- Free any heap-allocated memory properly to avoid leaks.
-- If required, include a Makefile with the necessary rules (`$(NAME)`, `all`, `clean`, `fclean`, `re`) to compile your project.
-- The project should be submitted to your assigned Git repository.
+- Project must be written in C.
+- Follow the Norm guidelines.
+- Functions should not quit unexpectedly.
+- Properly free all heap allocated memory.
+- Submit a Makefile for compilation.
+- Create a `bonus` rule in the Makefile for additional features.
+- If using `libft`, copy its sources and Makefile to a `libft` folder.
+- Encourage creating test programs for the project.
 
 ## Mandatory Part
+### Function: `get_next_line`
+- Prototype: `char *get_next_line(int fd);`
+- Parameters: `fd` - The file descriptor to read from.
+- Return Value: 
+  - Read line: correct behavior.
+  - `NULL`: Nothing else to read, or an error occurred.
+- External Functions: `read`, `malloc`, `free`.
+- Description: 
+  - Repeated calls to `get_next_line` should read the text file one line at a time.
+  - Returns the line that was read.
+  - Returns `NULL` if nothing else to read or if an error occurred.
+  - Header file `get_next_line.h` must contain the prototype.
+  - Helper functions in `get_next_line_utils.c`.
 
-### Function Signature
+### Compilation
+- Define buffer size for `read()` using: `-D BUFFER_SIZE=n`
+- Example: `cc -Wall -Wextra -Werror -D BUFFER_SIZE=42 <files>.c`
+- Considerations for `BUFFER_SIZE` value.
 
-```char *get_next_line(int fd);```
+### Forbidden
+- No use of `libft`.
+- `lseek()` is forbidden.
+- Global variables are forbidden.
 
-The get_next_line function takes a file descriptor (fd) as a parameter and returns a line read from that file descriptor. The function should handle repeated calls (using a loop) to read the text file or standard input, one line at a time. If there is nothing else to read or an error occurs, the function should return NULL.
-
-Files to Submit
-
-get_next_line.c
-
-get_next_line_utils.c
-
-get_next_line.h
-
-### Bonus Part
-If you have completed the mandatory part and want to take on additional challenges, you can attempt the bonus part. Here are the requirements:
-
-Develop get_next_line using only one static variable.
-The function should be able to manage multiple file descriptors simultaneously. Each call to get_next_line should read from a different file descriptor without interfering with the reading thread of each descriptor or returning a line from another descriptor.
-To submit the bonus part, include the following files in addition to the mandatory part files:
-
-get_next_line_bonus.c
-
-get_next_line_bonus.h
-
-get_next_line_utils_bonus.c
-
+## Bonus Part
+- Develop `get_next_line` using only one static variable.
+- Manage multiple file descriptors simultaneously.
+- Files: 
+  - `get_next_line_bonus.c`
+  - `get_next_line_bonus.h`
+  - `get_next_line_utils_bonus.c`
