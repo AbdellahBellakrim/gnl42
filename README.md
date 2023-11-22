@@ -27,6 +27,7 @@ The main goal of this project is to implement the `get_next_line` function, whic
 ### Function Signature
 
 ```char *get_next_line(int fd);```
+
 The get_next_line function takes a file descriptor (fd) as a parameter and returns a line read from that file descriptor. The function should handle repeated calls (using a loop) to read the text file or standard input, one line at a time. If there is nothing else to read or an error occurs, the function should return NULL.
 
 Files to Submit
